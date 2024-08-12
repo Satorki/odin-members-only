@@ -1,0 +1,25 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odin Members Only</title>
+</head>
+<body>
+    <h3>Odin Members Only</h3>
+    <h1><%= title %></h1>
+    <p>:</p>
+    <p><%= status %></p>
+    <a href="/log-in">Log In</a>
+    <a href="/sign-up">Sign Up</a>
+    <section>
+        <% messages.forEach(function(message) { %>
+            <div>
+                <h3><%= message.title %></h3>
+                <p><%= message.content %></p>
+                <p>Name: <%= message.name %></p>
+                <p>Date: <%= message.date %></p>
+            </div>
+        <% }) %>
+    </section>
+</body>
+</html>
