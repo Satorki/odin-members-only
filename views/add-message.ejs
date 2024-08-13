@@ -1,0 +1,26 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>Odin Members Only</title>
+  </head>
+  <body>
+    <h3><a href="/">Odin Members Only</a></h3>
+    <h1 style="display: inline-block"><%= title %></h1>
+    <p style="display: inline-block">: <%= isLoggedIn %></p>
+    <br />
+    <p>Name: <%= name %> Status: <%= status %></p>
+    <a href="/log-in">Log In</a>
+    <a href="/sign-up">Sign Up</a>
+    <section>
+      <form action="/add-message" method="POST">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" />
+        <label for="content">Content</label>
+        <input type="text" name="content" id="content" />
+        <button type="submit">Add Message</button>
+      </form>
+    </section>
+  </body>
+</html>
