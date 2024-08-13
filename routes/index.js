@@ -10,11 +10,30 @@ const messages = [
   },
 ];
 
+const user = {
+  name: "Amando",
+  password: "1234",
+};
+
 router.get("/", (req, res) => {
   res.render("index", {
     title: "Home Page",
-    status: "Not logged in",
+    isLoggedIn: "Not logged in",
     messages: messages,
+    name: user.name,
+    status: "Not logged in",
+  });
+});
+
+router.get("/log-in", (req, res) => {
+  res.render("log-in", {
+    title: "Log In",
+  });
+});
+
+router.get("/sign-up", (req, res) => {
+  res.render("sign-up", {
+    title: "Sign Up",
   });
 });
 

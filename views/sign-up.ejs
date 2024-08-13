@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../style.css" />
+    <title>Odin Members Only</title>
+  </head>
+  <body>
+    <h3><a href="/">Odin Members Only</a></h3>
+    <h1 style="display: inline-block"><%= title %></h1>
+    <form action="/sign-up" method="POST">
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" required/>
+      <label for="surname">Surname</label>
+      <input type="text" name="surname" id="surname" required/>
+      <label for="nickname">Nickname</label>
+      <input type="text" name="nickname" id="nickname" required/>
+      <label for="status">Status</label>
+      <input type="text" name="status" id="status" required/>
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" required/>
+      <button type="submit">Sign Up</button>
+  </body>
+</html>

@@ -1,25 +1,27 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="../style.css" />
     <title>Odin Members Only</title>
-</head>
-<body>
-    <h3>Odin Members Only</h3>
-    <h1><%= title %></h1>
-    <p>:</p>
-    <p><%= status %></p>
+  </head>
+  <body>
+    <h3><a href="/">Odin Members Only</a></h3>
+    <h1 style="display: inline-block"><%= title %></h1>
+    <p style="display: inline-block">: <%= isLoggedIn %></p>
+    <br />
+    <p>Name: <%= name %> Status: <%= status %></p>
     <a href="/log-in">Log In</a>
     <a href="/sign-up">Sign Up</a>
     <section>
-        <% messages.forEach(function(message) { %>
-            <div>
-                <h3><%= message.title %></h3>
-                <p><%= message.content %></p>
-                <p>Name: <%= message.name %></p>
-                <p>Date: <%= message.date %></p>
-            </div>
-        <% }) %>
+      <% messages.forEach(function(message) { %>
+      <div>
+        <h3><%= message.title %></h3>
+        <p><%= message.content %></p>
+        <p>Name: <%= message.name %></p>
+        <p>Date: <%= message.date %></p>
+      </div>
+      <% }) %>
     </section>
-</body>
+  </body>
 </html>
