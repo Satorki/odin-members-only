@@ -25,10 +25,9 @@ const loginRouter = require("./routes/log-in");
 const signupRouter = require("./routes/sign-up");
 const addMessageRouter = require("./routes/add-message");
 app.use("/", indexRouter);
-app.use("/log-in", loginRouter);
-app.use("/sign-up", signupRouter);
-app.use("/add-message", addMessageRouter);
-
+app.use("/", loginRouter);
+app.use("/", signupRouter);
+app.use("/", addMessageRouter);
 
 // Session and passport setup
 app.use(session({ secret: "arepo", resave: false, saveUninitialized: false }));

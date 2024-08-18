@@ -9,9 +9,14 @@
   <body>
     <h3><a href="/">Odin Members Only</a></h3>
     <h1 style="display: inline-block"><%= title %></h1>
+
+    <% if (error) { %>
+    <p style="color: red"><%- error %></p>
+    <% } %>
+
     <form action="/log-in" method="POST">
-      <label for="username">Username</label>
-      <input id="username" name="username" placeholder="username" type="text" />
+      <label for="username">Username - Nickname</label>
+      <input id="username" name="username" placeholder="nickname" type="text" />
       <label for="password">Password</label>
       <input id="password" name="password" type="password" />
       <button type="submit">Log In</button>

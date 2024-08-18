@@ -5,7 +5,7 @@ const pool = require("../db");
 const bcrypt = require("bcrypt");
 
 // Sign up GET
-router.get("/", (req, res) => {
+router.get("/sign-up", (req, res) => {
   res.render("sign-up", {
     title: "Sign Up",
     error: "",
@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
 });
 // Sign up POST
 router.post(
-  "/",
+  "/sign-up",
   asyncHandler(async (req, res) => {
     console.log(req.body);
 
