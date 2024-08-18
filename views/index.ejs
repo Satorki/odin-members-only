@@ -11,8 +11,8 @@
     <p style="display: inline-block">: <%= isLoggedIn %></p>
     <br />
     <p>Name: <%= name %> Status: <%= status %></p>
-    <a href="/log-in">Log In</a>
-    <a href="/sign-up">Sign Up</a>
+    <a class="aButton" href="/log-in">Log In</a>
+    <a class="aButton" href="/sign-up">Sign Up</a>
     <section>
       <% messages.forEach(function(message) { %>
       <div>
@@ -23,5 +23,8 @@
       </div>
       <% }) %>
     </section>
+    <br />
+    <br />
+    <a class="aButton" href="/add-message">Add Message</a>
   </body>
 </html>

@@ -7,8 +7,7 @@ const pool = require("../db");
 router.get(
   "/",
   asyncHandler(async (req, res) => {
-    // take the users from database
-    const users = await pool.query("SELECT * FROM users");
+    
     // take the messages from database
     const messages = await pool.query("SELECT * FROM messages");
 

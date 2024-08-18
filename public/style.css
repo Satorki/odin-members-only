@@ -20,8 +20,30 @@ div {
   border-radius: 10px;
 }
 
-a {
+select {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
   margin-right: 10px;
+  display: block;
+}
+
+a {
+  text-decoration: none;
+  color: #1976d2;
+}
+.aButton {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #1976d2;
+  color: #fff;
+  cursor: pointer;
+  margin: 20px;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 input {

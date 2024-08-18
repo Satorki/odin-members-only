@@ -5,4 +5,6 @@ create table messages ( id serial primary key, title varchar(255) not null, cont
 alter table messages rename column name to name_id;
 alter table messages alter column name_id type integer using name_id::integer;
 
-insert into users (name, surname, nickname, status, password) values ('admin', 'admin', 'admin', 'admin', 'admin');
+create table members ( id serial primary key, status_name varchar(255) not null);
+
+insert into members (status_name) values ('Low'), ('Medium'), ('High');
