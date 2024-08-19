@@ -8,7 +8,7 @@ router.get(
   "/",
   asyncHandler(async (req, res) => {
     // take the messages from database
-    const messages = await pool.query("SELECT * FROM messages");
+    const messages = await pool.query("SELECT * FROM messages JOIN users ON messages.name_id = users.id;");
 
     res.render("index", {
       title: "Home Page",
