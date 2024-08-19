@@ -14,6 +14,18 @@ const PORT = process.env.PORT || 3000;
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
+// Session and passport setup
+app.use(
+    session({
+      secret: "keyboard cat",
+      resave: false,
+      saveUninitialized: false,
+      cookie: { secure: false },
+    })
+  );
+  app.use(passport.initialize());
+  app.use(passport.session());
+
 // Middleware setup
 app.use(express.static("public"));
 app.use(express.json());
@@ -29,10 +41,7 @@ app.use("/", loginRouter);
 app.use("/", signupRouter);
 app.use("/", addMessageRouter);
 
-// Session and passport setup
-app.use(session({ secret: "arepo", resave: false, saveUninitialized: false }));
-app.use(passport.initialize());
-app.use(passport.session());
+
 
 // Server start
 app.listen(PORT, () => console.log(`App is running on port ${PORT}`));

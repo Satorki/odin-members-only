@@ -39,35 +39,15 @@ router.post(
       });
     }
 
-    res.render("index", {
-      title: "Home Page",
-      isLoggedIn: "Logged in",
-      messages: [],
+    req.session.user = {
+      id: user.rows[0].id,
       name: user.rows[0].name,
-      status: "Logged in",
-    });
+      status: user.rows[0].status,
+      isLoggedIn: true,
+    };
+
+    res.redirect("/");
   })
 );
-
-// if (
-//   req.body.username === user.rows[0].nickname &&
-//   req.body.password === user.rows[0].password
-// ) {
-//   res.render("index", {
-//     title: "Home Page",
-//     isLoggedIn: "Logged in",
-//     messages: messages,
-//     name: user.name,
-//     status: "Logged in",
-//   });
-// } else {
-//   res.render("index", {
-//     title: "Home Page",
-//     isLoggedIn: "Not logged in",
-//     messages: messages,
-//     name: user.name,
-//     status: "Not logged in",
-//   });
-// }
 
 module.exports = router;

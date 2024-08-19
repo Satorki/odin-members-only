@@ -15,7 +15,6 @@ router.get("/sign-up", (req, res) => {
 router.post(
   "/sign-up",
   asyncHandler(async (req, res) => {
-    console.log(req.body);
 
     if (
       req.body.name === "" ||
@@ -28,7 +27,7 @@ router.post(
       });
     }
 
-    const user = await pool.query("SELECT * FROM users WHERE name = $1", [
+    const user = await pool.query("SELECT * FROM users WHERE nickname = $1", [
       req.body.nickname,
     ]);
 
@@ -38,39 +37,21 @@ router.post(
         title: "Sign Up",
         error: "User already exists",
       });
+    } else {
+      const hashedPassword = await bcrypt.hash(req.body.password, 10);
+      await pool.query(
+        "INSERT INTO users (name, surname, nickname, status, password) VALUES ($1, $2, $3, $4, $5)",
+        [
+          req.body.name,
+          req.body.surname,
+          req.body.nickname,
+          req.body.status,
+          hashedPassword,
+        ]
+      );
+
+      res.redirect("/");
     }
-
-    const hashedPassword = await bcrypt.hash(req.body.password, 10);
-    await pool.query(
-      "INSERT INTO users (name, surname, nickname, status, password) VALUES ($1, $2, $3, $4, $5)",
-      [
-        req.body.name,
-        req.body.surname,
-        req.body.nickname,
-        req.body.status,
-        hashedPassword,
-      ]
-    );
-
-    // if (req.body.name === user.name && req.body.password === user.password) {
-    //   res.render("index", {
-    //     title: "Home Page",
-    //     isLoggedIn: "Logged in",
-    //     messages: messages,
-    //     name: user.name,
-    //     status: "Logged in",
-    //   });
-    // } else {
-    //   res.render("index", {
-    //     title: "Home Page",
-    //     isLoggedIn: "Not logged in",
-    //     messages: messages,
-    //     name: user.name,
-    //     status: "Not logged in",
-    //   });
-    // }
-
-    res.redirect("/");
   })
 );
 
