@@ -7,15 +7,16 @@ const pool = require("../db");
 router.get(
   "/",
   asyncHandler(async (req, res) => {
-    // take the messages from database
-    const messages = await pool.query("SELECT * FROM messages JOIN users ON messages.name_id = users.id;");
+    const messages = await pool.query(
+      "SELECT * FROM messages JOIN users ON messages.name_id = users.id;"
+    );
 
     res.render("index", {
       title: "Home Page",
-      isLoggedIn: req.session.user ? "Logged in" : "Not logged in",
+      isLoggedIn: req.isAuthenticated() ? "Logged in" : "Not logged in",
       messages: messages.rows,
-      name: req.session.user ? req.session.user.name : "",
-      status: req.session.user ? req.session.user.status : "",
+      name: req.user ? req.user.name : "",
+      status: req.user ? req.user.status : "",
     });
   })
 );
