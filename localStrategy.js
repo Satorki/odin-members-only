@@ -16,15 +16,11 @@ const localStrategy = new LocalStrategy(
 
       const user = rows[0];
       if (!user) {
-        console.log("User not found");
-
         return done(null, false, { message: "Incorrect username" });
       }
 
       const match = await bcrypt.compare(password, user.password);
       if (!match) {
-        console.log("Passwords do not match");
-
         return done(null, false, { message: "Incorrect password" });
       }
 
