@@ -21,29 +21,6 @@ router.post(
   validateSignUp(),
   validateSignUpMiddleware,
   asyncHandler(async (req, res) => {
-    // if (
-    //   req.body.name === "" ||
-    //   req.body.surname === "" ||
-    //   req.body.password === ""
-    // ) {
-    //   res.render("sign-up", {
-    //     title: "Sign Up",
-    //     error: "Please fill in all the fields",
-    //   });
-    // }
-
-    // const user = await pool.query("SELECT * FROM users WHERE nickname = $1", [
-    //   req.body.nickname,
-    // ]);
-
-    // if (user.rows.length > 0) {
-    //   console.log("User already exists");
-    //   res.render("sign-up", {
-    //     title: "Sign Up",
-    //     error: "User already exists",
-    //   });
-    // } else {
-
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     await pool.query(
       "INSERT INTO users (name, surname, nickname, status, password) VALUES ($1, $2, $3, $4, $5)",

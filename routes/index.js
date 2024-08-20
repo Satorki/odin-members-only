@@ -11,6 +11,20 @@ router.get(
       "SELECT * FROM messages JOIN users ON messages.name_id = users.id;"
     );
 
+    if (!req.user) {
+      messages.rows.forEach((message) => {
+        message.name = "Anonymous";
+      });
+    }
+
+    if (req.user) {
+      if (req.user.status !== "High") {
+        messages.rows.forEach((message) => {
+          message.name = "Anonymous";
+        });
+      }
+    }
+
     res.render("index", {
       title: "Home Page",
       isLoggedIn: req.isAuthenticated() ? "Logged in" : "Not logged in",
